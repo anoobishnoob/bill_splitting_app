@@ -46,7 +46,7 @@ class _BillSplitterState extends State<BillSplitter> {
                     ),),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: Text("\$ ${calcTotalPerPerson(_billAmount, _personCounter.toDouble(), _tipPercent)}", style: TextStyle(
+                      child: Text("\$ ${calcTotalPerPerson(_billAmount, _personCounter, _tipPercent)}", style: TextStyle(
                           color: _purple,
                           fontWeight: FontWeight.bold,
                           fontSize: 30
@@ -205,8 +205,8 @@ class _BillSplitterState extends State<BillSplitter> {
         )
     );
   }
-  calcTotalPerPerson(double totalTip, double billAmount, int splitBy){
-    var totalPerPerson = (totalTip + billAmount) / splitBy;
+  calcTotalPerPerson( double billAmount, int splitBy, int tipPercentage){
+    var totalPerPerson = (calcTotalTip(billAmount, splitBy, tipPercentage) + billAmount) / splitBy;
 
     return totalPerPerson.toStringAsFixed(2);
 

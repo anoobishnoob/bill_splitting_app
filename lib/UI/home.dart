@@ -38,8 +38,20 @@ class _BillSplitterState extends State<BillSplitter> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Total Per Person"),
-                    Text("\$231132312") // \ is an escape character
+                    Text("Total Per Person", style: TextStyle(
+                        color: _purple,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15
+
+                    ),),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text("\$231132312", style: TextStyle(
+                          color: _purple,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30
+                      ),),
+                    ) // \ is an escape character
 
                   ],
                 ),
@@ -160,6 +172,27 @@ class _BillSplitterState extends State<BillSplitter> {
                             fontSize: 17
                           ),),
                         )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text("$_tipPercent%", style: TextStyle(
+                          color: _purple,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold
+                        ),),
+                        Slider(min: 0,
+                            max: 100,
+                            activeColor: _purple,
+                            inactiveColor: Colors.grey,
+                            divisions: 20,
+                            value: _tipPercent.toDouble(),
+                            onChanged: (double value){
+                          setState(() {
+                            _tipPercent = value.round();
+                          });
+
+                        })
                       ],
                     )
 

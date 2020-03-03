@@ -1,6 +1,6 @@
 # bill_splitting_app
 
-A new Flutter application.
+Mainly just using this to learn the UI design flow of fluter/dart apps
 
 ## Getting Started
 

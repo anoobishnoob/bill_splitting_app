@@ -1,4 +1,5 @@
 
+import 'package:bill_splitting_app/util/hexcolor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class BillSplitter extends StatefulWidget {
 class _BillSplitterState extends State<BillSplitter> {
   int _tipPercent =0;
   int _personCounter =1;
-  double billAmount =0.0;
+  double _billAmount =0.0;
+  Color _purple = HexColor("#6908D6");
 
 
 
@@ -30,7 +32,7 @@ class _BillSplitterState extends State<BillSplitter> {
                 width: 150,
                 height: 150,
                 decoration: BoxDecoration(
-                  color: Colors.purpleAccent.shade400,
+                  color: _purple.withOpacity(0.1),//Colors.purpleAccent.shade400,
                   borderRadius: BorderRadius.circular(12.0)
                 ),
                 child: Column(
@@ -38,6 +40,41 @@ class _BillSplitterState extends State<BillSplitter> {
                   children: <Widget>[
                     Text("Total Per Person"),
                     Text("\$231132312") // \ is an escape character
+
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(
+                    color: Colors.blueGrey.shade100,
+                    style: BorderStyle.solid
+                  ),
+                    borderRadius: BorderRadius.circular(12)
+
+                ),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      keyboardType: TextInputType.numberWithOptions(decimal: true),
+                      style: TextStyle(color: _purple.withOpacity(.5)),
+                      decoration: InputDecoration(
+                        prefixText: "Bill Amount",
+                        prefixIcon: Icon(Icons.attach_money)
+                      ),
+                      onChanged: (String value){
+                        try{
+                          _billAmount = double.parse(value);
+
+                        }catch(exception){
+                          _billAmount =0.0;
+
+                        }
+                      },
+                    )
 
                   ],
                 ),

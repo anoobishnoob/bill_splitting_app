@@ -60,7 +60,7 @@ class _BillSplitterState extends State<BillSplitter> {
                   children: <Widget>[
                     TextField(
                       keyboardType: TextInputType.numberWithOptions(decimal: true),
-                      style: TextStyle(color: _purple.withOpacity(.5)),
+                      style: TextStyle(color: _purple.withOpacity(.7)),
                       decoration: InputDecoration(
                         prefixText: "Bill Amount",
                         prefixIcon: Icon(Icons.attach_money)
